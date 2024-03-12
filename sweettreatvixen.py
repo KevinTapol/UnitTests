@@ -21,16 +21,38 @@ driver = webdriver.Chrome(service=service)
 
 driver.get("https://sweettreatvixen.netlify.app/")
 
+caterId = "experiment"
+cakeId = "cakesID"
+contactId = "contactForm"
+
+time.sleep(3)
+
+# this block of code waits for the Catering Navbar to show then clicks it open
+WebDriverWait(driver, 5).until(
+    EC.presence_of_element_located((By.ID, caterId))
+)
+cater = driver.find_element(By.ID, caterId)
+cater.click()
+
+# time.sleep(3)
+# this block of code waits for the Cakes button to show in the Catering Navbar then clicks it open
 # WebDriverWait(driver, 5).until(
-#     EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Catering')]"))
+#     EC.presence_of_element_located((By.ID, cakeId))
 # )
+# cake = driver.find_element(By.ID, cakeId)
+# cake.click()
 
-# not working maybe because it's a button with an href instead of an anchor tag
-# link = driver.find_element((By.XPATH, "//*[contains(text(), 'Catering')]"))
-# link.click()
+time.sleep(3)
+# this block of code waits for the Catering Navbar to be open and clicks Contacts
+WebDriverWait(driver, 5).until(
+    EC.presence_of_element_located((By.ID, contactId))
+)
 
-# input_element = driver.find_element(By.CLASS_NAME, "")
+contact = driver.find_element(By.ID, contactId)
+contact.click()
+
+# next step is to fill out the input form and then click submit
 
 time.sleep(10)
 
-driver.quit()
+# driver.quit()
