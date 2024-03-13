@@ -10,6 +10,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+# mouse scroll simulation
+from selenium.webdriver.common.action_chains import ActionChains
+
 import time
 
 service = Service(executable_path="chromedriver.exe")
@@ -42,7 +45,7 @@ cater.click()
 # cake = driver.find_element(By.ID, cakeId)
 # cake.click()
 
-time.sleep(3)
+time.sleep(2)
 # this block of code waits for the Catering Navbar to be open and clicks Contacts
 WebDriverWait(driver, 5).until(
     EC.presence_of_element_located((By.ID, contactId))
@@ -51,8 +54,44 @@ WebDriverWait(driver, 5).until(
 contact = driver.find_element(By.ID, contactId)
 contact.click()
 
-# next step is to fill out the input form and then click submit
+time.sleep(1)
+# This is scrolling to the end of the document.
+# actions = ActionChains(driver)
+# actions.send_keys(Keys.PAGE_DOWN).perform()
 
-time.sleep(10)
+# Scroll down to a div with a specific id 
+element_id = "nameInput"
+script = f"document.getElementById('{element_id}').scrollIntoView();"
+driver.execute_script(script)
+
+# next step is to fill out the input form and then click submit
+name = driver.find_element(By.ID, "nameInput")
+name.clear()
+name.send_keys("Tim")
+
+phone = driver.find_element(By.ID, "phoneInput")
+phone.clear()
+phone.send_keys("(555) 555-5555")
+
+mail = driver.find_element(By.ID, "emailInput")
+mail.clear()
+mail.send_keys("Tim@mail.com")
+
+subject = driver.find_element(By.ID, "subjectInput")
+subject.clear()
+subject.send_keys("Ordering Baked Goods")
+
+message = driver.find_element(By.ID, "messageInput")
+message.clear()
+message.send_keys("Hello there Sweet Treat Vixen! I would like to order some of your delicious cakes!")
+
+time.sleep(2)
+
+# button click for send message after the form is filled using send_keys because .click() work
+sendMessageId = "submitButton"
+sendMessage = driver.find_element(By.ID, sendMessageId)
+sendMessage.send_keys(Keys.ENTER)
+
+time.sleep(5)
 
 # driver.quit()
