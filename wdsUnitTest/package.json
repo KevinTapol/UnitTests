@@ -1,0 +1,15 @@
+{
+  "name": "wdsunittest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wdsUnitTest.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
