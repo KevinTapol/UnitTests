@@ -1,9 +1,14 @@
 import './style.css'
+import sum from './sum'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
+document.querySelector('#app').innerHTML = sum(1, 2, 3).toString()
+
+
+/*
+`
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="${viteLogo}" class="logo" alt="Vite logo" />
@@ -22,3 +27,5 @@ document.querySelector('#app').innerHTML = `
 `
 
 setupCounter(document.querySelector('#counter'))
+
+*/

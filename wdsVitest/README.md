@@ -1,5 +1,4 @@
 # Vitest
-<!-- 10:55 -->
 The goal of this repo is to learn the Unit Testing Software Vitest designed for Vite.
 
 <a target="_blank" href="https://www.youtube.com/watch?v=7f-71kYhK00&t=339s&ab_channel=WebDevSimplified">Click here for WebDevSimplified's tutorial on **Unit Testing with Vitest for Vite**</a>
@@ -26,3 +25,10 @@ The goal of this repo is to learn the Unit Testing Software Vitest designed for 
 
 *To allow inline testing on the same file, go to vite.config.ts and add the following inside the test object*
 includeSource: ["src/**/*,{js,ts}"],
+
+
+*add the following to vite.config.ts to force the if check specifically for import.meta.vite to evaluate to false which removes the test cases that occurs under true*
+
+ define: {
+        "import.meta.vitest": "undefined",
+    },
